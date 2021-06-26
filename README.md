@@ -1,70 +1,106 @@
-# Getting Started with Create React App
+# How To Make A Map On Mapbox?
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+How can we generate a map inside React.js with the help of Mapbox website... 🌍
 
-## Available Scripts
+<img src="https://navid5155.hashnode.dev/_next/image?url=https%3A%2F%2Fcdn.hashnode.com%2Fres%2Fhashnode%2Fimage%2Fupload%2Fv1624730397590%2FbFD8mVZMV.jpeg%3Fw%3D1600%26h%3D840%26fit%3Dcrop%26crop%3Dentropy%26auto%3Dcompress%2Cformat%26format%3Dwebp&w=1920&q=75" alt="logo" />
 
-In the project directory, you can run:
+First of all, we will create an account on the website of [Mapbox](https://www.mapbox.com/).
 
-### `npm start`
+And as soon as we create an account on the Mapbox website, I will post a token to us. which we will use in our program i.e. code
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+<hr />
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `npm test`
+## It will look something like this. ⬇️
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+>  NOTE : I have removed some words from this, please do not try it, it will not work. 😊😊😊😊😊 I just put for example. 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```javascript
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+pk.eyJ1IjoibmFaWQMTU1IiwiYSIImNrcWRhdGg1NzAzMsydm1seXBidXY3zEifQ.gHgXk-VTNt30bvKm_eMWyA
 
-### `npm run eject`
+```
+and after that, we will install an extension using npm or yarn.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```javascript
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+$ npm i mapbox-gl
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```
+or
 
-## Learn More
+```javascript
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+$ yarn add mapbox-gl
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
 
-### Code Splitting
+After installing we will import this extension. and we will access token so that he is ready to do his job.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+We will access the token with something like. ⬇️
 
-### Analyzing the Bundle Size
+```javascript
+mapboxgl.accessToken = pk.eyJ1IjoibmFaWQMTU1IiwiYSIImNrcWRhdGg1NzAzMsydm1seXBidXY3zEifQ.gHgXk-VTNt30bvKm_eMWyA
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+and we will write code something like this using use state. So that our program is completely ready to run on the browser. and give us the output in the correct proof.
 
-### Making a Progressive Web App
+```javascript
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
+ const mapboxElRef = useRef(null);
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+    useEffect(() => {
+        const map = new mapboxgl.Map({
+            container: mapboxElRef.current,
+            style: "mapbox://styles/notalemesa/ck8dqwdum09ju1ioj65e3ql3k",
+            center: [27, 32],
+            zoom: 2
+        });
 
-### Deployment
+        map.addControl(new mapboxgl.NavigationControl());
+    }, []);
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+```
+and we will return our component. like that ⬇️ .
 
-### `npm run build` fails to minify
+```javascript
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<div className="App">
+       <div className="mapContainer">
+           <div className="mapBox" ref={mapboxElRef} />
+       </div>
+</div>
+
+```
+
+nd after that our complete map will be generated and will output something like this to the browser.
+https://navid5155.hashnode.dev/how-to-make-a-map-on-mapbox
+
+<img src="https://cdn.hashnode.com/res/hashnode/image/upload/v1624729511511/F2RtZL0ZW.png?auto=compress,format&format=webp" alt="logo..." />
+
+<hr />
+
+Live Demo and Project Code 👨‍💻
+
+source code : github.com/NavidMansuri5155/World_Map.io
+> NOTE : This code outputs perfectly but the page is not uploaded after posting. 😔
+
+<hr />
+
+Thank you for reading 🙏
+
+If you enjoyed this article or found it helpful, give it a thumbs-up 👍
+
+Feel free to connect 👋
+
+[Instagram](https://www.instagram.com/nabizada_navid_mansuri/) , [Facebook](https://www.facebook.com/navid.mansuri.5/), [Twitter](https://twitter.com/NAVIDMANSURI7)
+
+Happy coding..👨‍💻
+
+
+
+
